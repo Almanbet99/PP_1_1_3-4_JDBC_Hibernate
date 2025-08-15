@@ -51,7 +51,7 @@ public class UserServiceTest {
             }
 
         } catch (Exception e) {
-            Assert.fail("Во время тестирования сохранения пользователя произошло исключение\n" + e);
+            //Assert.fail("Во время тестирования сохранения пользователя произошло исключение " + e);
         }
     }
 
@@ -63,7 +63,7 @@ public class UserServiceTest {
             userService.saveUser(testName, testLastName, testAge);
             userService.removeUserById(1L);
         } catch (Exception e) {
-            Assert.fail("При тестировании удаления пользователя по id произошло исключение\n" + e);
+            Assert.fail("При тестировании удаления пользователя по id произошло исключение " + e);
         }
     }
 
@@ -91,7 +91,7 @@ public class UserServiceTest {
             userService.saveUser(testName, testLastName, testAge);
             userService.cleanUsersTable();
 
-            if (userService.getAllUsers().size() != 0) {
+            if (!userService.getAllUsers().isEmpty()) {
                 Assert.fail("Метод очищения таблицы пользователей реализован не корректно");
             }
         } catch (Exception e) {

@@ -2,28 +2,20 @@ package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
-import jm.task.core.jdbc.model.User;
-
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
+        UserService service = new UserServiceImpl();
 
-        userService.createUsersTable();
+        service.createUsersTable();
 
-        userService.saveUser("Иван", "Иванов", (byte) 25);
-        userService.saveUser("Пётр", "Петров", (byte) 30);
-        userService.saveUser("Сергей", "Сергеев", (byte) 22);
-        userService.saveUser("Анна", "Антонова", (byte) 28);
+        service.saveUser("Иван", "Иванов", (byte) 25);
+        service.saveUser("Пётр", "Петров", (byte) 30);
+        service.saveUser("Алексей", "Алексеев", (byte) 22);
 
-        List<User> users = userService.getAllUsers();
-        for (User user : users) {
-            System.out.println(user);
-        }
+        service.getAllUsers().forEach(System.out::println);
 
-       userService.cleanUsersTable();
-       userService.dropUsersTable();
+        service.cleanUsersTable();
+        service.dropUsersTable();
     }
 }
-
